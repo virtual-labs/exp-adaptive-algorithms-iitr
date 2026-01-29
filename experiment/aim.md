@@ -1,1 +1,3 @@
-### Aim of the experiment
+#### Simulation of adaptive noise cancellation, interference canceling, channel equalization using appropriate adaptive filters for various scenario and compare the performance for various other variants of these adaptive algorithms
+##### a.Implementation and analysis of Autoregressive Stochastic processes and Minimum Variance Distortionless Beamformer using LMS and Monte-Carlo Runs.
+##### b.Simulate an adaptive prediction and equalization with LMS and RLS Algorithm.

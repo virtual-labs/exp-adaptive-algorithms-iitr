@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Signal Processing</title>
+
+  <!-- ✅ CORRECT CSS PATH -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body data-algo="LMS" data-app="Equalization">
+
+<div class="simulation-wrapper">
+
+  <!-- TITLE -->
+  <div class="title">
+    <a href="#">Adaptive Signal Processing</a>
+  </div>
+
+  <!-- ALGORITHM TABS -->
+  <div class="tab-container">
+    <button class="tab-btn" data-algo="LMS">LMS</button>
+    <button class="tab-btn" data-algo="RLS">RLS</button>
+  </div>
+
+  <!-- APPLICATION TABS -->
+  <div class="tab-container">
+     <button class="tab-btn" data-app="Equalization">Equalization</button>
+     <button class="tab-btn" data-app="Prediction">Prediction</button>
+   
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-box">
+
+    <!-- CODE SECTION -->
+    <div class="code-section">
+      <textarea id="codeBox" readonly>Code will be generated here!</textarea>
+
+      <div style="margin-top:15px;">
+        <button class="btn small">Download</button>
+        <button class="btn small" onclick="runSimulation()">Submit & Run</button>
+      </div>
+    </div>
+
+    <!-- PARAMETERS -->
+    <div class="param-section">
+      <h3>Select the input Parameters</h3>
+
+      <p>0.001 ≤ Step-size (μ) ≤ 0.1</p>
+      <div class="input-row">
+        <input type="text" id="muVal" value="0.01">
+        <input type="range" min="0.001" max="0.1" step="0.001"
+               value="0.01" oninput="syncMu(this.value)">
+      </div>
+
+      <p>10 ≤ Number of Samples (N) ≤ 1000</p>
+      <div class="input-row">
+        <input type="text" id="nVal" value="500">
+        <input type="range" min="10" max="1000" step="10"
+               value="500" oninput="syncN(this.value)">
+      </div>
+
+      <p>0.005 ≤ Signal Power ≤ 0.05</p>
+      <div class="input-row">
+        <input type="text" id="sigVal" value="0.01">
+        <input type="range" min="0.005" max="0.05" step="0.001"
+               value="0.01" oninput="syncSignal(this.value)">
+      </div>
+
+      <p>0.001 ≤ Noise Power ≤ 0.01</p>
+      <div class="input-row">
+        <input type="text" id="noiseVal" value="0.001">
+        <input type="range" min="0.001" max="0.01" step="0.001"
+               value="0.001" oninput="syncNoise(this.value)">
+      </div>
+
+      <button class="btn large" onclick="generateCode()">Generate Code</button>
+    </div>
+  </div>
+
+  <!-- GRAPH -->
+  <div class="graphs-container">
+    <h3 class="graph-title">Adaptation Cycles vs. MSE</h3>
+    <div class="graph-box">
+      <canvas id="errorPlot"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- ✅ CORRECT JS PATHS (ORDER MATTERS) -->
+<script src="js/tabs.js"></script>
+
+<script src="js/lms-equalization.js"></script>
+
+</body>
+</html>
