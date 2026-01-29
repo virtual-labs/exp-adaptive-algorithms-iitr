@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Signal Processing</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body data-algo="LMS" data-app="Prediction">
+
+<div class="simulation-wrapper">
+
+  <!-- TITLE -->
+  <div class="title">
+    <a href="#">Adaptive Signal Processing</a>
+  </div>
+
+  <!-- ALGORITHM TABS -->
+  <div class="tab-container">
+    <button class="tab-btn" data-algo="LMS">LMS</button>
+    <button class="tab-btn" data-algo="RLS">RLS</button>
+  </div>
+
+  <!-- APPLICATION TABS -->
+  <div class="tab-container">
+    <button class="tab-btn" data-app="Equalization">Equalization</button>
+    <button class="tab-btn" data-app="Prediction">Prediction</button>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-box">
+
+    <!-- CODE SECTION -->
+    <div class="code-section">
+      <textarea id="codeBox" readonly>Code will be generated here!</textarea>
+
+      <div style="margin-top:15px;">
+        <button class="btn small">Download</button>
+        <button class="btn small" onclick="runSimulation()">Submit & Run</button>
+      </div>
+    </div>
+
+    <!-- PARAMETERS -->
+    <div class="param-section">
+
+      <h3>Select the input Parameters</h3>
+
+      <!-- MU 1 -->
+      <p>0.001 ≤ Step-size (μ₁) ≤ 0.1</p>
+      <div class="input-row">
+        <input type="text" id="mu1Val" value="0.01">
+        <input type="range" min="0.001" max="0.1" step="0.001"
+               value="0.01"
+               oninput="mu1Val.value=this.value">
+      </div>
+
+      <!-- MU 2 -->
+      <p>0.001 ≤ Step-size (μ₂) ≤ 0.1</p>
+      <div class="input-row">
+        <input type="text" id="mu2Val" value="0.05">
+        <input type="range" min="0.001" max="0.1" step="0.001"
+               value="0.05"
+               oninput="mu2Val.value=this.value">
+      </div>
+
+      <!-- MU 3 -->
+      <p>0.001 ≤ Step-size (μ₃) ≤ 0.1</p>
+      <div class="input-row">
+        <input type="text" id="mu3Val" value="0.1">
+        <input type="range" min="0.001" max="0.1" step="0.001"
+               value="0.11"
+               oninput="mu3Val.value=this.value">
+      </div>
+
+      <!-- NUMBER OF SAMPLES -->
+      <p>10 ≤ Number of Samples (n) ≤ 1000</p>
+      <div class="input-row">
+        <input type="text" id="nVal" value="500">
+        <input type="range" min="10" max="1000" step="10"
+               value="500"
+               oninput="nVal.value=this.value">
+      </div>
+
+      <!-- SIGMA NU -->
+      <p>0 ≤ Sigma Nu ≤ 1</p>
+      <div class="input-row">
+        <input type="text" id="sigVal" value="0.1">
+        <input type="range" min="0" max="1" step="0.01"
+               value="0.1"
+               oninput="sigVal.value=this.value">
+      </div>
+
+      <!-- WEIGHT COEFFICIENT -->
+      <p>0 ≤ Weight Coeff (a) ≤ 1</p>
+      <div class="input-row">
+        <input type="text" id="aVal" value="0.5">
+        <input type="range" min="0" max="1" step="0.01"
+               value="0.5"
+               oninput="aVal.value=this.value">
+      </div>
+
+      <button class="btn large" onclick="generateCode()">Generate Code</button>
+
+    </div>
+  </div>
+
+  <!-- GRAPHS -->
+  <div class="graphs-container">
+
+    <h3 class="graph-title">Desired Output</h3>
+    <div class="graph-box">
+      <canvas id="desiredPlot"></canvas>
+    </div>
+
+    <h3 class="graph-title">Learning Curve (MSE)</h3>
+    <div class="graph-box">
+      <canvas id="msePlot"></canvas>
+    </div>
+
+    <h3 class="graph-title">Random Walk Behaviour</h3>
+    <div class="graph-box">
+      <canvas id="rwPlot"></canvas>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- JS FILES -->
+<script src="js/tabs.js"></script>
+<script src="js/lms-prediction.js"></script>
+
+</body>
+</html>

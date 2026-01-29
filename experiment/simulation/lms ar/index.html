@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Signal Processing</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* CSS to ensure the wrapper maintains the layout integrity */
+    .wrapper-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    /* Ensures canvas and main boxes stay within the div */
+    .wrapper-container canvas, 
+    .wrapper-container .main-box {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper-container">
+  <div class="app-wrapper">
+    <h2 class="title">
+      <a href="#">Adaptive Signal Processing</a>
+    </h2>
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="goLMS()">LMS</button>
+      <button class="tab-btn" onclick="goMVDR()">MVDR</button>
+    </div>
+
+    <div class="main-box">
+      <div class="simulation-wrapper">
+        <div class="main-box">
+          
+        </div>
+      </div>
+      
+      <div class="code-section">
+        <textarea id="codeBox" readonly>Code will be generated here..!</textarea>
+        <div class="code-buttons">
+          <button class="btn small" onclick="downloadCode()">Download</button>
+          <button class="btn small" onclick="submitAndRun()">Submit & Run</button>
+        </div>
+      </div>
+
+      <div class="param-section">
+        <h3>Select the input Parameters</h3>
+        <div class="param">
+          <label>10 ≤ Number of samples (N) ≤ 1000</label>
+          <div class="input-row">
+            <input type="text" id="N_val" value="500">
+            <input type="range" id="N" min="10" max="1000" value="500" oninput="syncValue('N')">
+          </div>
+        </div>
+
+        <div class="param">
+          <label>0 ≤ Initial value u1 ≤ 1</label>
+          <div class="input-row">
+            <input type="text" id="u1_val" value="0.5">
+            <input type="range" id="u1" min="0" max="1" step="0.01" value="0.5" oninput="syncValue('u1')">
+          </div>
+        </div>
+
+        <div class="param">
+          <label>0 ≤ Initial value u2 ≤ 1</label>
+          <div class="input-row">
+            <input type="text" id="u2_val" value="1">
+            <input type="range" id="u2" min="0" max="1" step="0.01" value="1" oninput="syncValue('u2')">
+          </div>
+        </div>
+
+        <div class="param">
+          <label>0.001 ≤ Step size (μ) ≤ 0.1</label>
+          <div class="input-row">
+            <input type="text" id="mu_val" value="0.1">
+            <input type="range" id="mu" min="0.001" max="0.1" step="0.001" value="0.1" oninput="syncValue('mu')">
+          </div>
+        </div>
+
+        <button class="btn large" onclick="generateCode()">Generate Code</button>
+      </div>
+    </div>
+    <div class="chart-box">
+  <canvas id="mseChart"></canvas>
+</div>
+
+<div class="chart-box">
+  <canvas id="w1Chart"></canvas>
+</div>
+
+<div class="chart-box">
+  <canvas id="w2Chart"></canvas>
+</div>
+
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Signal Processing</title>
+
+  <!-- Common CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body data-algo="RLS" data-app="Prediction">
+
+<div class="simulation-wrapper">
+
+  <!-- TITLE -->
+  <div class="title">
+    <a href="#">Adaptive Signal Processing</a>
+  </div>
+
+  <!-- ALGORITHM TABS -->
+  <div class="tab-container">
+    <button class="tab-btn" data-algo="LMS">LMS</button>
+    <button class="tab-btn" data-algo="RLS">RLS</button>
+  </div>
+
+  <!-- APPLICATION TABS -->
+  <div class="tab-container">
+    <button class="tab-btn" data-app="Equalization">Equalization</button>
+    <button class="tab-btn" data-app="Prediction">Prediction</button>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-box">
+
+    <!-- CODE SECTION -->
+    <div class="code-section">
+      <textarea id="codeBox" readonly>Code will be generated here!</textarea>
+
+      <div style="margin-top:15px;">
+        <button class="btn small">Download</button>
+        <button class="btn small">Submit & Run</button>
+      </div>
+    </div>
+
+    <!-- PARAMETERS -->
+    <div class="param-section">
+
+      <h3>Select the input Parameters</h3>
+
+      <!-- NUMBER OF SAMPLES -->
+      <p>100 ≤ Number of Samples (N) ≤ 1000</p>
+      <div class="input-row">
+        <input type="text" value="500">
+        <input type="range" min="100" max="1000" step="10" value="500">
+      </div>
+
+      <!-- SIGMA NU -->
+      <p>0 ≤ Standard Deviation (σ<sub>ν</sub>) ≤ 1</p>
+      <div class="input-row">
+        <input type="text" value="0.5">
+        <input type="range" min="0" max="1" step="0.01" value="0.5">
+      </div>
+
+      <!-- WEIGHT COEFFICIENT -->
+      <p>0 ≤ Weight coefficient ≤ 1</p>
+      <div class="input-row">
+        <input type="text" value="0.99">
+        <input type="range" min="0" max="1" step="0.01" value="0.99">
+      </div>
+
+      <!-- FORGETTING FACTOR -->
+      <p>0.01 ≤ Forgetting Factor (λ) ≤ 1</p>
+      <div class="input-row">
+        <input type="text" value="0.99">
+        <input type="range" min="0.01" max="1" step="0.01" value="0.99">
+      </div>
+
+      <button class="btn large">Generate Code</button>
+
+    </div>
+  </div>
+
+  <!-- GRAPHS SECTION -->
+  <div class="graphs-container">
+    <h3 class="graph-title">Desired Output</h3>
+    <div class="graph-box">
+      <canvas id="desiredPlot"></canvas>
+    </div>
+
+    <h3 class="graph-title">Learning Curve for RLS</h3>
+    <div class="graph-box">
+      <canvas id="msePlot"></canvas>
+    </div>
+
+    <h3 class="graph-title">Random Walk Behaviour</h3>
+    <div class="graph-box">
+      <canvas id="rwPlot"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- Tab switching -->
+<script src="js/tabs.js"></script>
+<script src="js/rls-prediction.js"></script>
+
+</body>
+</html>

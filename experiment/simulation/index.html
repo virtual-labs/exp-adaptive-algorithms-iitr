@@ -1,13 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+    <meta charset="UTF-8">
+    <title>Adaptive Signal Processing Simulation</title>
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Times New Roman", serif;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(
+                120deg,
+                #c86b7a,
+                #8fa6c3,
+                #63c3c3,
+                #5fb47c
+            );
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Heading section */
+        .title-container {
+            margin-top: 60px;
+            text-align: center;
+            color: #000;
+        }
+
+        .title-container h1 {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .title-container h2 {
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        /* Buttons container */
+        .button-container {
+            margin-bottom: 70px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .sim-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 20px 28px;
+            font-size: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            min-width: 260px;
+            text-align: center;
+        }
+
+        .sim-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .sim-button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .button-container {
+                flex-direction: column;
+            }
+
+            .sim-button {
+                min-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Title -->
+    <div class="title-container">
+        <h1>Adaptive Signal Processing</h1>
+        <h2>Simulation</h2>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-container">
+        <button class="sim-button" onclick="openAR()">
+            Autoregressive Stochastic Processes<br>
+            & MVDR Beamformer<br>
+            (LMS & Monte-Carlo)
+        </button>
+
+        <button class="sim-button" onclick="openEqualization()">
+            Adaptive Prediction & Equalization<br>
+            (LMS & RLS Algorithms)
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function openAR() {
+            window.location.href = "lms ar/index.html";
+        }
+
+        function openEqualization() {
+            window.location.href = "lms-rls/lms-equalization.html";
+        }
+    </script>
+
 </body>
 </html>
