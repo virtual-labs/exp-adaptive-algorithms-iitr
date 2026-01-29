@@ -1,0 +1,18 @@
+import numpy as np
+import pandas as pd
+
+# Set seed for reproducibility
+np.random.seed(42)
+
+# Generate 1000 samples of Gaussian White Noise (Mean=0, Variance=1)
+num_samples = 1000
+samples = np.random.normal(loc=0, scale=1, size=num_samples)
+
+# Create a DataFrame
+df = pd.DataFrame(samples, columns=['Signal_Value'])
+
+# Save to CSV
+file_name = 'WSS_1000_Samples.csv'
+df.to_csv(file_name, index=False)
+
+print(f"Generated {file_name} with {num_samples} samples.")

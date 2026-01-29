@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adaptive Signal Processing</title>
+
+  <!-- Common CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body data-algo="RLS" data-app="Equalization">
+
+<div class="simulation-wrapper">
+
+  <!-- TITLE -->
+  <div class="title">
+    <a href="#">Adaptive Signal Processing</a>
+  </div>
+
+  <!-- ALGORITHM TABS -->
+  <div class="tab-container">
+    <button class="tab-btn" data-algo="LMS">LMS</button>
+    <button class="tab-btn" data-algo="RLS">RLS</button>
+  </div>
+
+  <!-- APPLICATION TABS -->
+  <div class="tab-container">
+    <button class="tab-btn" data-app="Equalization">Equalization</button>
+    <button class="tab-btn" data-app="Prediction">Prediction</button>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-box">
+
+    <!-- CODE SECTION -->
+    <div class="code-section">
+      <textarea id="codeBox" readonly>Code will be generated here!</textarea>
+
+      <div style="margin-top:15px;">
+        <button class="btn small">Download</button>
+        <button class="btn small">Submit & Run</button>
+      </div>
+    </div>
+
+    <!-- PARAMETERS -->
+    <div class="param-section">
+
+      <h3>Select the input Parameters</h3>
+
+      <!-- W -->
+      <p>0 ≤ W ≤ 15</p>
+      <div class="input-row">
+        <input type="text" value="7">
+        <input type="range" min="0" max="15" step="1" value="7">
+      </div>
+
+      <!-- xi_R -->
+      <p>0 ≤ ξ<sub>R</sub> ≤ 15</p>
+      <div class="input-row">
+        <input type="text" value="7">
+        <input type="range" min="0" max="15" step="1" value="7">
+      </div>
+
+      <!-- NUMBER OF SAMPLES -->
+      <p>100 ≤ Number of samples (N) ≤ 1000</p>
+      <div class="input-row">
+        <input type="text" value="500">
+        <input type="range" min="100" max="1000" step="10" value="500">
+      </div>
+
+      <!-- SNR -->
+      <p>0 ≤ SNR (dB) ≤ 50</p>
+      <div class="input-row">
+        <input type="text" value="25">
+        <input type="range" min="0" max="50" step="1" value="25">
+      </div>
+
+      <!-- NUMBER OF TAPS -->
+      <p>10 ≤ Number of taps in the equalizer (L) ≤ 20</p>
+      <div class="input-row">
+        <input type="text" value="15">
+        <input type="range" min="10" max="20" step="1" value="15">
+      </div>
+
+      <!-- DELAY -->
+      <p>1 ≤ Delay for desired response ≤ 15</p>
+      <div class="input-row">
+        <input type="text" value="7">
+        <input type="range" min="1" max="15" step="1" value="7">
+      </div>
+
+      <button class="btn large">Generate Code</button>
+
+    </div>
+  </div>
+
+  <!-- GRAPH SECTION -->
+  <div class="graphs-container">
+    <h3 class="graph-title">Adaptive Equalisation RLS</h3>
+    <div class="graph-box">
+      <canvas id="rlsMseChart"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- Tab switching -->
+<script src="js/tabs.js"></script>
+<script src="js/rls-equalization.js"></script>
+
+</body>
+</html>
