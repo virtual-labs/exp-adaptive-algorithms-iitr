@@ -33,7 +33,7 @@ x(n) is the input signal vector at time n,<br>
 e(n) is the error signal, defined as the difference between the desired signal and the actual output.<br>
 The LMS algorithm is simple to implement and computationally efficient, making it suitable for real-time applications.<br>
 
-<center> <img src="images\image 1.png""style="  darken;  ">Figure 1.1
+<center> <img src="images\image 1.png""style="  darken;  "> <br>Figure 1.1
           </center>
          
 
@@ -58,13 +58,13 @@ The combination of MVDR beamforming with the LMS algorithm and Monte Carlo simul
 #### AR process with LMS and monte-carlo runs
 Autoregressive models operate under the premise that past values have an effect on current values, which makes the statistical technique popular for analysing nature, economics, and other processes that vary over time. Multiple regression models forecast a variable using a linear combination of predictors, whereas autoregressive models use a combination of past values of the variable.
 
-<center> <img src="images\image 2.png""style="height: 600px; width: 850px;   darken;  ">Figure 1.2
+<center> <img src="images\image 2.png""style="height: 600px; width: 850px;   darken;  "><br>Figure 1.2
           </center>
 We consider the example of M order AR process that is real valued. The above figure shows the block diagram of model used to generate this process. Its time domain description is governed by the M order difference equation<br>
 <center> u(n)+a<sub>1</sub>u(n-1)+a<sub>2</sub>u(n-2)+...........+a<sub>3</sub>u(n-M)=v(n)
 where v(n) is drawn from a white noise process of zero mean and variance σ<sup>2</sup>.</center>
 
-<center> <img src="images\image 3.png""style="  darken;  ">Figure 1.3
+<center> <img src="images\image 3.png""style="  darken;  "><br>Figure 1.3
           </center>
 We use the error e(n) between the desired response d(n) and the output of the filter y(n) to tune the weights of the filter. The Least Mean Squares (LMS) algorithm is the most popular adaptive algorithm due to its simplicity and robustness.<br>
 The LMS algorithm performs the following operations to update the coefficients of an adaptive FIR filter:<br>
@@ -99,7 +99,7 @@ The Monte Carlo simulation is a mathematical technique that predicts possible ou
 #### Adaptive Equalization
 In adaptive equalization, the filters adopt themselves to the dispersive effects of the channel. An adaptive equalizer automatically adapts to time-varying properties of the communication channel. The technique of equalization is used to reduce the additive noise. These equalizers are majorly kept in the receiver side. The theory behind this is that the filter characteristics should be optimized. The filter coefficients of an adaptive filter are based on error signal e(n) between the filter output d̂(n) and desired signal d(n).Goal of equalizers is to overcome the negative effects of the channel.
 
-<center> <img src="images\image 8.png""style="  darken;  ">Figure 1.4
+<center> <img src="images\image 8.png""style="  darken;  "><br>Figure 1.4
           </center>
 
 #### Adaptive equalization using LMS
@@ -114,7 +114,7 @@ w(n + 1) = w(n) + μe(n)y(n)<br>
 
 #### Adaptive equalization using RLS
 RLS is advantageous in adaptive equalization for its ability to quickly adapt to channel variations. It provides a high level of performance in environments where the channel characteristics change rapidly, ensuring that the equalizer can effectively mitigate ISI and maintain signal integrity.<br>
-<center> <img src="images\image 10.png""style="  darken;  ">Figure 1.5
+<center> <img src="images\image 10.png""style="  darken;  "><br>Figure 1.5
           </center>
 
 In adaptive equalization, the received signal y(n) is passed through an adaptive filter to produce the equalized output ŝ(n). The error signal e(n), which is the difference between the desired signal s(n) and the equalized output, guides the adaptation process:<
@@ -131,7 +131,7 @@ where P(n) is the inverse correlation matrix and k(n) is the gain vector.<br>
 
 #### Adaptive Prediction via LMS
 Commonly used filters can be divided into three kinds: FIR (Finite Impulse Response) filter, IIR (Infinite Impulse Response) filter, and adaptive filter. The precondition of FIR filter and IIR filter is that the statistical characteristics of input signals are known. The premise design condition of adaptive filter is that some of the statistical characteristics of input signals are unknown. The performance indexes of filter can be replaced by the estimated value of unknown signal. In order to analyse the adaptive filter based on LMS (Least Mean Square) algorithm, the principle and application of adaptive filter should be introduced, and the simulation results based on the statistical experimental method are presented according to the principle and structure of LMS algorithm. The applications of adaptive filtering technology are shown by the introduction of three parts: an adaptive linear filter for the correction of channel mismatch, an adaptive equalizer for the improvement of system performance, and an adaptive notch filter for the elimination of the interference signal with known frequency.
-<center> <img src="images\image 14.png""style="  darken;  ">Figure 1.6
+<center> <img src="images\image 14.png""style="  darken;  "><br>Figure 1.6
           </center>
 Desired output is generated as:<br>
 u(n) =- au(n - 1) + v(n)<br>
@@ -145,7 +145,7 @@ Accepting these assumptions, the adaptive filter must predict the future values 
 #### Adaptive Prediction via RLS
 Adaptive prediction involves estimating future values of a signal based on past observations. This is critical in applications such as speech coding, echo cancellation, and financial time series forecasting. The goal is to minimize the prediction error, which is the difference between the actual signal and its predicted value.
 The RLS algorithm is preferred for adaptive prediction due to its recursive nature and rapid convergence. Unlike other algorithms such as the Least Mean Squares (LMS), RLS minimizes the weighted sum of squared errors with an exponential weighting factor, providing a robust and efficient means of updating prediction parameters.
-<center> <img src="images\image 16.png""style="  darken;  ">Figure 1.8
+<center> <img src="images\image 16.png""style="  darken;  "><br>Figure 1.8
           </center>
 Given a discrete time signal x(n), the predicted value x̂(n+1) is based on a linear combination of past values x(n),x(n-1),…,x(n - p + 1). The prediction error e(n) is given by:<br>
 <center> <img src="images\image 17.png""style="  darken;  ">
