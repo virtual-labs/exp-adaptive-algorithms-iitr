@@ -1,0 +1,47 @@
+
+/home/runner/work/exp-adaptive-algorithms-iitr/exp-adaptive-algorithms-iitr/experiment/simulation/lms ar/script.js
+  130:10  warning  'submitAndRun' is defined but never used  no-unused-vars
+  219:18  warning  'Chart' is not defined                    no-undef
+  256:17  warning  'Chart' is not defined                    no-undef
+  306:17  warning  'Chart' is not defined                    no-undef
+  361:10  warning  'downloadCode' is defined but never used  no-unused-vars
+  385:10  warning  'goLMS' is defined but never used         no-unused-vars
+  389:10  warning  'goMVDR' is defined but never used        no-unused-vars
+
+/home/runner/work/exp-adaptive-algorithms-iitr/exp-adaptive-algorithms-iitr/experiment/simulation/lms-rls/js/lms-equalization.js
+    2:5   warning  'currentAlgorithm' is assigned a value but never used    no-unused-vars
+    3:5   warning  'currentApplication' is assigned a value but never used  no-unused-vars
+    6:10  warning  'selectAlgorithm' is defined but never used              no-unused-vars
+   14:10  warning  'selectApplication' is defined but never used            no-unused-vars
+   23:10  warning  'syncMu' is defined but never used                       no-unused-vars
+   26:10  warning  'syncN' is defined but never used                        no-unused-vars
+   29:10  warning  'syncSignal' is defined but never used                   no-unused-vars
+   32:10  warning  'syncNoise' is defined but never used                    no-unused-vars
+   37:10  warning  'generateCode' is defined but never used                 no-unused-vars
+  124:10  warning  'runSimulation' is defined but never used                no-unused-vars
+  177:18  warning  'Chart' is not defined                                   no-undef
+  235:39  warning  'index' is defined but never used                        no-unused-vars
+  235:46  warning  'values' is defined but never used                       no-unused-vars
+
+/home/runner/work/exp-adaptive-algorithms-iitr/exp-adaptive-algorithms-iitr/experiment/simulation/lms-rls/js/lms-prediction.js
+  146:11  warning  'weight_e_temp' is assigned a value but never used  no-unused-vars
+  243:22  warning  'Chart' is not defined                              no-undef
+  293:18  warning  'Chart' is not defined                              no-undef
+  386:17  warning  'Chart' is not defined                              no-undef
+  457:10  warning  'syncMu1' is defined but never used                 no-unused-vars
+  460:10  warning  'syncMu2' is defined but never used                 no-unused-vars
+  463:10  warning  'syncMu3' is defined but never used                 no-unused-vars
+  466:10  warning  'syncN' is defined but never used                   no-unused-vars
+  469:10  warning  'syncSigma' is defined but never used               no-unused-vars
+  472:10  warning  'syncA' is defined but never used                   no-unused-vars
+
+/home/runner/work/exp-adaptive-algorithms-iitr/exp-adaptive-algorithms-iitr/experiment/simulation/lms-rls/js/rls-equalization.js
+  380:18  warning  'Chart' is not defined  no-undef
+
+/home/runner/work/exp-adaptive-algorithms-iitr/exp-adaptive-algorithms-iitr/experiment/simulation/lms-rls/js/rls-prediction.js
+  301:22  warning  'Chart' is not defined  no-undef
+  387:18  warning  'Chart' is not defined  no-undef
+  462:17  warning  'Chart' is not defined  no-undef
+
+✖ 34 problems (0 errors, 34 warnings)
+

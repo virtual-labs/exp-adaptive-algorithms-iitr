@@ -1,0 +1,575 @@
+<!DOCTYPE html><html lang="en"><head>
+      <!--Google Tag Manager-->
+      <script class="gtm">
+        var dataLayer = [{
+        'labName': 'Virtual Lab',
+        'discipline': 'Test',
+        'college': 'IITR',
+        'phase': 'Testing',
+        'expName': 'ADAPTIVE SIGNAL PROCESSING',
+        'expShortName': 'adaptive-algorithms'
+        }];
+    
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5NMQ9NQ');
+      </script>
+      <!--End Google Tag Manager-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    
+    	<meta name="experiment-short-name" content="adaptive-algorithms">
+    	<meta name="developer-institute" content="IITR">
+    	<meta name="learning-unit" content="ADAPTIVE SIGNAL PROCESSING">
+    	<meta name="task-name" content="Theory">
+    
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#4076e0">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4076e0">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4076e0">
+    <title>Virtual Labs</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" integrity="sha512-Oy18vBnbSJkXTndr2n6lDMO5NN31UljR8e/ICzVPrGpSud4Gkckb8yUpqhKuUNoE+o9gAb4O/rAxxw1ojyUVzg==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=Raleway&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/github-markdown.min.css">
+    <link rel="stylesheet" href="./assets/css/vlabs-style.css">
+    <link rel="stylesheet" href="./assets/css/toast.css">
+    <link rel="stylesheet" href="./assets/katex_assets/katex.min.css">
+    
+    <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      h1 {
+      font-size: 1.8rem;
+      }
+      h2 {
+      font-size: 1.4rem;
+      }
+      h3 {
+      font-size: 1.2rem;
+      }
+
+      h2, h3 {
+      font-weight: 800;
+      }
+    </style>
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"></head>
+  <body class="p-0 container-fluid vlabs-page d-flex flex-column justify-content-between">
+      <!--Google Tag Manager (noscript)-->
+      <noscript class="gtm">
+        <iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-5NMQ9NQ" style="display:none;visibility:hidden" width="0">
+        </iframe>
+      </noscript>
+      <!--End Google Tag Manager (noscript)-->
+  
+      <header class="vlabs-header sticky-top bg-white">
+        <nav class="p-0 navbar navbar-light d-flex align-items-stretch">
+          
+          <button class="navbar-toggler px-4" type="button" onclick="toggle()">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="d-flex justify-content-center">        
+            <a href="https://vlab.co.in" class="navbar-brand">
+              <img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+            </a>
+          </div>
+          
+          <div id="headerNavbar" class="d-none border-top flex-grow-1 d-lg-flex align-items-center justify-content-end">
+            <div class="svc-rating-display">
+                <rating-display spreadsheetid="1x12nhpp0QvnsA6x-O1sV4IA9SAbfVsq_wiexWkutOmU" sheetname="Experiment-Database" columnname="Experiment Short Name" columnvalue="adaptive-algorithms" imagesdirectory="/plugins/svc-rating/images/">
+                </rating-display>
+            </div>      <div class="svc-rating-submit">
+                <rating-submit title="Rate" this="" experiment="">
+                </rating-submit>
+            </div>      <bug-report id="bug-report" title="[BUG REPORT] ADAPTIVE SIGNAL PROCESSING" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;IITR&quot;,&quot;expname&quot;:&quot;ADAPTIVE SIGNAL PROCESSING&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" button_style="border: none; color: #fff; background-color: #288ec8; text-align: center; font-size: 1.05rem; border-radius: 1em;padding: 0.6em 1.2em; margin: 0 10px" position="override" custom_button_class="v-button"></bug-report>
+          </div>
+        </nav>
+      </header>
+      <div class="container-fluid flex-fill d-flex flex-column vlabs-page-main">
+        <div class="row d-flex justify-content-between">
+          <div class="flex-column">
+          <div class="row py-4 px-4 breadcrumbs">
+          	<div class="title is-4 tools">Tools</div>
+          	<span class="mx-2">
+          		<i aria-hidden="true" class="fa fa-angle-right"></i>
+          	</span>
+          	<a href="performance-report.html" class="my-2 mx-3" target="_blank">
+          		<button class="v-button">Performance Tool</button>
+          	</a>
+          	<a href="validator-report.html" class="my-2 mx-3" target="_blank">
+          		<button class="v-button">Validation Tool</button>
+          	</a>
+          </div>
+          </div>
+        </div>
+        <div class="row flex-grow-1 d-flex flex-nowrap flex-column flex-lg-row">
+          <div class="modal fade popupmenu" id="popupMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                              <a href="https://vlab.co.in" class="navbar-brand">
+                                  <img src="./assets/images/vlabs-color-small-moe.jpg" alt="vlabs logo" class="vlabs-logo">
+                              </a>
+                          </h5>
+                          <button type="button" class="btn-close align-self-center" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body nav-menu">
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="index.html" class="p-2 ">
+                                      Aim
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="theory.html" class="p-2  current-item ">
+                                      Theory
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="pretest.html" class="p-2 ">
+                                      Pretest
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="procedure.html" class="p-2 ">
+                                      Procedure
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="simulation.html" class="p-2 ">
+                                      Simulation
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="posttest.html" class="p-2 ">
+                                      Posttest
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="references.html" class="p-2 ">
+                                      References
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="contributors.html" class="p-2 ">
+                                      Contributors
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                              <div>
+                                  <div class="d-flex nav-menu-body">
+                                      <a href="feedback.html" class="p-2 ">
+                                      Feedback
+                                      </a>
+                                      
+                                  </div>
+                                  <div id="t-" class="collapse">
+                                      <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                                      </div>
+                                  </div>
+                              </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="nav flex-column sidebar nav-menu flex-shrink-0 px-lg-4 align-items-center align-items-lg-start hidden d-none d-lg-flex" id="menu">
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="index.html" class="p-2 ">
+                        Aim
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="theory.html" class="p-2  current-item ">
+                        Theory
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="pretest.html" class="p-2 ">
+                        Pretest
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="procedure.html" class="p-2 ">
+                        Procedure
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="simulation.html" class="p-2 ">
+                        Simulation
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="posttest.html" class="p-2 ">
+                        Posttest
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="references.html" class="p-2 ">
+                        References
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="contributors.html" class="p-2 ">
+                        Contributors
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex nav-menu-body">
+                        <a href="feedback.html" class="p-2 ">
+                        Feedback
+                        </a>
+                        
+                    </div>
+                    <div id="t-" class="collapse">
+                        <div class="px-3 d-flex flex-column tasks align-items-center align-items-lg-start">
+                        </div>
+                    </div>
+                </div>
+          </div>          <div class="vlabs-page-content px-5 pb-4 flex-grow-1 markdown-body">
+            <div class="text-center fix-spacing">
+              <h2 id="adaptive-signal-processing">Adaptive Signal Processing</h2>
+          
+            </div>
+              
+          
+          <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> 
+            
+          </script>
+          
+          
+          
+          <div style="font-family: 'Nunito Sans', sans-serif; font-size: 20px;text-align: justify;">
+          
+          <h3 id="aminimum-variance-distortion-less-beamformer-using-lms-and-monte-carlo-runs">A.Minimum Variance Distortion less Beamformer Using LMS and Monte-Carlo Runs</h3>
+          <h4 id="introduction-to-beamforming">Introduction to Beamforming</h4>
+          <p>Beamforming is a signal processing technique used in sensor arrays for directional signal transmission or reception. This technique involves combining signals from multiple sensors in such a way that signals from a particular direction are constructively combined while those from other directions are destructively interfered. Beamforming is widely used in applications such as radar, sonar, wireless communications, and audio signal processing.</p>
+          <h4 id="minimum-variance-distortion-less-response-mvdr-beamformer">Minimum Variance Distortion less Response (MVDR) Beamformer</h4>
+          <p>The MVDR beamformer, also known as the Capon beamformer, is designed to minimize the output power of the beamformer subject to the constraint that the response in the direction of the desired signal remains unity. This can be mathematically expressed as:<br>
+          min<sub>w</sub>w<sup>H</sup>HRw subject to w<sup>H</sup>a(θ) = 1<br>
+          where:<br>
+          w is the beamforming weight vector,<br>
+          R is the covariance matrix of the input data,<br>
+          a(θ) is the steering vector in the direction θ<br>
+          The solution to this optimization problem is given by:<br>
+          w<sub>MvDR</sub> =R<sup>-1</sup>-a(θ)/aHR-1a(θ)<br>
+          This solution ensures that the desired signal is preserved while minimizing the power from interference and noise.</p>
+          <h4 id="least-mean-squares-lms-algorithm">Least Mean Squares (LMS) Algorithm</h4>
+          <p>The Least Mean Squares (LMS) algorithm is an adaptive filter used to find the filter coefficients that minimize the mean square error between the desired signal and the actual output of the filter. In the context of beamforming, the LMS algorithm can be used to iteratively adjust the beamforming weights to minimize the output power. The update rule for the weights is given by: <br>
+          w(n + 1) = w(n) - μx(n)ⅇ*(n)<br>
+          where:
+          <br>
+          μ is the step size parameter,<br>
+          x(n) is the input signal vector at time n,<br>
+          e(n) is the error signal, defined as the difference between the desired signal and the actual output.<br>
+          The LMS algorithm is simple to implement and computationally efficient, making it suitable for real-time applications.<br></p>
+          <center> <img src="images\image 1.png" "style="  darken;  "> <br>Figure 1.1
+                    </center>
+                   
+          
+          
+          <h4 id="monte-carlo-simulations">Monte Carlo Simulations</h4>
+          <p>Monte Carlo simulations are a statistical technique used to model and analyse the behaviour of complex systems through random sampling. In the context of beamforming, Monte Carlo simulations can be used to evaluate the performance of the MVDR beamformer under various scenarios, such as different signal-to-noise ratios, array geometries, and interference conditions.<br>
+          The combination of MVDR beamforming with the LMS algorithm and Monte Carlo simulations provides a robust framework for adaptive beamforming. The LMS algorithm adapts the beamforming weights in real-time, ensuring that the MVDR criterion is satisfied even in changing environments. Monte Carlo simulations can be used to evaluate the performance of this adaptive approach under different scenarios and validate its effectiveness.<br></p>
+          <h4 id="advantages">Advantages</h4>
+          <ul>
+          <li><p><strong>Real-Time Adaptation:</strong><br>The LMS algorithm allows for real-time adjustment of the beamforming weights, making the system adaptable to changing conditions.</p>
+          </li>
+          <li><p><strong>Performance Evaluation:</strong><br>Monte Carlo simulations provide a comprehensive evaluation of the system's performance under various scenarios, ensuring robustness.</p>
+          <h4 id="disadvantages">Disadvantages</h4>
+          </li>
+          <li><p><strong>Computational Complexity:</strong><br>While the LMS algorithm is computationally efficient, the overall complexity can increase with the size of the sensor array and the number of Monte Carlo runs.</p>
+          </li>
+          <li><p><strong>Convergence:</strong><br>Ensuring convergence of the LMS algorithm to the optimal solution requires careful selection of the step-size parameter μ.</p>
+          <h4 id="ar-process-with-lms-and-monte-carlo-runs">AR process with LMS and monte-carlo runs</h4>
+          <p>Autoregressive models operate under the premise that past values have an effect on current values, which makes the statistical technique popular for analysing nature, economics, and other processes that vary over time. Multiple regression models forecast a variable using a linear combination of predictors, whereas autoregressive models use a combination of past values of the variable.</p>
+          </li>
+          </ul>
+          <center> <img src="images\image 2.png" "style="height: 600px; width: 850px;   darken;  "><br>Figure 1.2
+                    </center>
+          We consider the example of M order AR process that is real valued. The above figure shows the block diagram of model used to generate this process. Its time domain description is governed by the M order difference equation<br>
+          <center> u(n)+a<sub>1</sub>u(n-1)+a<sub>2</sub>u(n-2)+...........+a<sub>3</sub>u(n-M)=v(n)
+          where v(n) is drawn from a white noise process of zero mean and variance σ<sup>2</sup>.</center>
+          
+          <center> <img src="images\image 3.png" "style="  darken;  "><br>Figure 1.3
+                    </center>
+          We use the error e(n) between the desired response d(n) and the output of the filter y(n) to tune the weights of the filter. The Least Mean Squares (LMS) algorithm is the most popular adaptive algorithm due to its simplicity and robustness.<br>
+          The LMS algorithm performs the following operations to update the coefficients of an adaptive FIR filter:<br>
+          1. Calculates the output signal y(n) from the FIR filter.<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;y(n) = w<sup>T</sup>(n)u(n)<br>
+          
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;where u(n) is the tap-input vector at time n, defined by<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;u(n) = [u(n), u(n-1), ..., u(n-M+1)]<sup>T</sup>,<br></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;and w(n) is the tap-weight vector at time n, defined by<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;w(n) = [w<sub>0</sub>(n), w<sub>1</sub>(n), ..., w<sub>M-1</sub>(n)]<sup>T</sup><br></p>
+          <ol start="2">
+          <li>Calculates the error signal e(n) by using the following equation:<br></li>
+          </ol>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;e(n) = d(n) − y(n)<br></p>
+          <ol start="3">
+          <li>Updates the filter coefficients by using the following equation:<br></li>
+          </ol>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;w(n + 1) = w(n) + μu(n)e<sup>*</sup>(n)<br></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;where y(n) = w<sup>T</sup>(n)u(n)<br></p>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;where,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;μ is the step size of the adaptive filter<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;w(n) is the filter coefficients vector<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;u(n) is the filter input vector.<br></p>
+          <p>A Monte Carlo simulation is used to model the probability of different outcomes in a process that cannot easily be predicted due to the intervention of random variables. It is a technique used to understand the impact of risk and uncertainty. A Monte Carlo simulation is used to tackle a range of problems in many fields, including investing, business, physics, and engineering. It is also referred to as a multiple probability simulation.<br></p>
+          <p>The Monte Carlo simulation is a mathematical technique that predicts possible outcomes of an uncertain event. Monte Carlo simulation is a type of computational algorithm that uses repeated random sampling to obtain the likelihood of a range of results occurring.<br><br></p>
+          <h3 id="badaptive-prediction-and-equalization-using-least-mean-squares-lms-and-recursive-least-squares-rls-algorithms">B.Adaptive Prediction And Equalization Using Least Mean Squares (LMS) And Recursive Least Squares (RLS) Algorithms.</h3>
+          <h4 id="adaptive-equalization">Adaptive Equalization</h4>
+          <p>In adaptive equalization, the filters adopt themselves to the dispersive effects of the channel. An adaptive equalizer automatically adapts to time-varying properties of the communication channel. The technique of equalization is used to reduce the additive noise. These equalizers are majorly kept in the receiver side. The theory behind this is that the filter characteristics should be optimized. The filter coefficients of an adaptive filter are based on error signal e(n) between the filter output d̂(n) and desired signal d(n).Goal of equalizers is to overcome the negative effects of the channel.</p>
+          <center> <img src="images\image 8.png" "style="  darken;  "><br>Figure 1.4
+                    </center>
+          
+          <h4 id="adaptive-equalization-using-lms">Adaptive equalization using LMS</h4>
+          <p>Least mean squares (LMS) algorithms are a class of adaptive filter used to mimic a desired filter by finding the filter coefficients that relate to producing the least mean squares of the error signal (difference between the desired and the actual signal). It is a stochastic gradient descent method in that the filter is only adapted based on the error at the current time. LMS filter is built around a transversal (i.e. tapped delay line) structure. Two practical features, simple to design, yet highly effective in performance have made it highly popular in various application. LMS filter employ, small step size statistical theory, which provides a fairly accurate description of the transient behaviour. It also includes H∞ theory which provides the mathematical basis for the deterministic robustness of the LMS filters. As mentioned before LMS algorithm is built around a transversal filter, which is responsible for performing the filtering process. A weight control mechanism responsible for performing the adaptive control process on the tape weight of the transversal filter.
+          The LMS algorithm in general, consists of two basics procedure: Filtering process, which involve, computing the output of a linear filter in response to the input signal and generating an estimation error by comparing this output with a desired response as follows:<br>
+          e(n) = d(n) - y(n) <br>
+          The LMS algorithm is based on minimizing the instantaneous error i.e. e<sup>2</sup>(n) with respect to the filter coefficient vector h(n). The filter weights are updated as:<br>
+          w(n + 1) = w(n) + μe(n)y(n)<br></p>
+          <center> <img src="images\image 9.png" "style="  darken;  ">
+                    </center>
+          
+          <h4 id="adaptive-equalization-using-rls">Adaptive equalization using RLS</h4>
+          <p>RLS is advantageous in adaptive equalization for its ability to quickly adapt to channel variations. It provides a high level of performance in environments where the channel characteristics change rapidly, ensuring that the equalizer can effectively mitigate ISI and maintain signal integrity.<br></p>
+          <center> <img src="images\image 10.png" "style="  darken;  "><br>Figure 1.5
+                    </center>
+          
+          <p>In adaptive equalization, the received signal y(n) is passed through an adaptive filter to produce the equalized output ŝ(n). The error signal e(n), which is the difference between the desired signal s(n) and the equalized output, guides the adaptation process:&lt;</p>
+          <center> <img src="images\image 11.png" "style="  darken;  ">
+                    </center>
+          The RLS algorithm updates the filter coefficients wn to minimize the weighted sum of squared errors:
+          <center> <img src="images\image 12.png" "style="  darken;  ">
+                    </center>
+          The recursive update rules for RLS in the context of equalization are:
+          <center> <img src="images\image 13.png" "style="  darken;  ">
+                    </center>
+          where y(n) represents the input vector to the equalizer.<br>
+          where P(n) is the inverse correlation matrix and k(n) is the gain vector.<br>
+          
+          <h4 id="adaptive-prediction-via-lms">Adaptive Prediction via LMS</h4>
+          <p>Commonly used filters can be divided into three kinds: FIR (Finite Impulse Response) filter, IIR (Infinite Impulse Response) filter, and adaptive filter. The precondition of FIR filter and IIR filter is that the statistical characteristics of input signals are known. The premise design condition of adaptive filter is that some of the statistical characteristics of input signals are unknown. The performance indexes of filter can be replaced by the estimated value of unknown signal. In order to analyse the adaptive filter based on LMS (Least Mean Square) algorithm, the principle and application of adaptive filter should be introduced, and the simulation results based on the statistical experimental method are presented according to the principle and structure of LMS algorithm. The applications of adaptive filtering technology are shown by the introduction of three parts: an adaptive linear filter for the correction of channel mismatch, an adaptive equalizer for the improvement of system performance, and an adaptive notch filter for the elimination of the interference signal with known frequency.</p>
+          <center> <img src="images\image 14.png" "style="  darken;  "><br>Figure 1.6
+                    </center>
+          Desired output is generated as:<br>
+          u(n) =- au(n - 1) + v(n)<br>
+          where a = -0.98 and v(n) is gaussian white noise.<br>
+          Hence the optimal value of estimated weight = a<br>
+          <center> <img src="images\image 15.png" "style="  darken;  "><br>Figure 1.7
+                    </center>
+          Predicting signals requires that you make some key assumptions. Assume that the signal is either steady or slowly varying over time, and periodic over time as well.<br>
+          Accepting these assumptions, the adaptive filter must predict the future values of the desired signal based on past values. When s(n) is periodic and the filter is long enough to remember previous values, this structure with the delay in the input signal, can perform the prediction.<br><br>
+          
+          <h4 id="adaptive-prediction-via-rls">Adaptive Prediction via RLS</h4>
+          <p>Adaptive prediction involves estimating future values of a signal based on past observations. This is critical in applications such as speech coding, echo cancellation, and financial time series forecasting. The goal is to minimize the prediction error, which is the difference between the actual signal and its predicted value.
+          The RLS algorithm is preferred for adaptive prediction due to its recursive nature and rapid convergence. Unlike other algorithms such as the Least Mean Squares (LMS), RLS minimizes the weighted sum of squared errors with an exponential weighting factor, providing a robust and efficient means of updating prediction parameters.</p>
+          <center> <img src="images\image 16.png" "style="  darken;  "><br>Figure 1.8
+                    </center>
+          Given a discrete time signal x(n), the predicted value x̂(n+1) is based on a linear combination of past values x(n),x(n-1),…,x(n - p + 1). The prediction error e(n) is given by:<br>
+          <center> <img src="images\image 17.png" "style="  darken;  ">
+                    </center>
+          
+          <p>In the RLS algorithm, the coefficients wn are updated to minimize the cost function:<br></p>
+          <center> <img src="images\image 18.png" "style="  darken;  ">
+                    </center>
+          where 0 &lt; λ ≤ 1 is the forgetting factor. The recursive update equations for the RLS algorithm are:<br>
+          <center> <img src="images\image 19.png" "style="  darken;  ">
+                    </center>
+          where P(n) is the inverse correlation matrix and k(n) is the gain vector.<br>
+          The learning curve and random walk behavior are critical aspects of understanding and evaluating adaptive prediction and equalization algorithms. The LMS algorithm is characterized by its simplicity and slower convergence, as evidenced by its gradual learning curve and susceptibility to random walk behavior in noisy environments. In contrast, the RLS algorithm offers faster convergence and higher accuracy, with a sharp initial decline in its learning curve and reduced random walk behavior, making it more suitable for dynamic and high-performance applications.
+          </div>
+          <div class="bug-report-mobile">
+              <bug-report id="bug-report" title="[BUG REPORT] ADAPTIVE SIGNAL PROCESSING" page-type="text" context-info="{&quot;organisation&quot;:&quot;Virtual Labs&quot;,&quot;developer_institute&quot;:&quot;IITR&quot;,&quot;expname&quot;:&quot;ADAPTIVE SIGNAL PROCESSING&quot;,&quot;labname&quot;:&quot;Virtual Lab&quot;,&quot;phase&quot;:&quot;Testing&quot;}" checkbox-json="{&quot;text&quot;:[&quot;Insufficient Content&quot;],&quot;video&quot;:[&quot;Insufficient Content&quot;],&quot;assesment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;assessment&quot;:[&quot;Incorrect Options&quot;,&quot;Incorrect Answer&quot;,&quot;Incorrect Question&quot;],&quot;simulation&quot;:[&quot;Simulation Not Working&quot;,&quot;Incorrect Results/Observations&quot;,&quot;Insufficient/Incorrect Instructions&quot;],&quot;DEFAULT&quot;:[&quot;Page Not Loading&quot;,&quot;Content Not Visible&quot;,&quot;Incorrect Content&quot;]}" position="override" button_style="
+                          position: fixed; 
+                          bottom: 20px;
+                          right: 20px;
+                          z-index: 1;
+                          font-size: 0;
+                          padding: 25px;
+                          border-radius: 50%;
+                          border: none;
+                          background-color: #0fc0ff;
+                          background-image: url(data:image/png;base64,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);
+                          background-repeat: no-repeat;
+                          background-position: center;
+                          background-size: 30px;
+                          filter: invert(1);">
+              </bug-report>
+          </div>        </div>
+      </div>
+      <footer class="text-light pt-2 vlabs-footer d-flex flex-column">
+        <div class="row px-5 mx-0">
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Community Links</span>
+            <a href="https://www.sakshat.ac.in/" class="text-light">Sakshat Portal</a>
+            <a href="http://outreach.vlabs.ac.in/" class="text-light">Outreach Portal</a>
+            <a href="https://vlab.co.in/faq" class="text-light">FAQ: Virtual Labs</a>
+          </div>
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Contact Us</span>
+            <span> Phone: General Information: 011-26582050 </span>
+            <span> Email: support@vlabs.ac.in </span>
+          </div>
+          <div class="col d-flex flex-column">
+            <span class="font-weight-bold vlabs-footer-sect-name pb-2 mb-3">Follow Us</span>
+            <div class="social-links">
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #55acee;" href="https://twitter.com/TheVirtualLabs">
+      	  <i class="fab fa-twitter"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #3b5998;" href="https://www.facebook.com/Virtual-Labs-IIT-Delhi-301510159983871/">
+      	  <i class="fab fa-facebook"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #e52d27;" href="https://www.youtube.com/watch?v=asxRaOgk6a0">
+      	  <i class="fab fa-youtube"></i>
+      	</a>
+      	<a class="p-2 mt-1 mr-2 d-inline-flex justify-content-center align-items-center" style="background: #2867B2;" href="https://in.linkedin.com/in/virtual-labs-008ba9136">
+      	  <i class="fab fa-linkedin"></i>
+      	</a>
+            </div>
+          </div>
+        </div>
+        <div class="m-0 py-2 text-center" style="font-family: &quot;Open Sans&quot;, sans-serif; background: #212121;">
+          <a class="text-primary font-weight-bold" href="https://www.gnu.org/licenses/agpl-3.0.en.html"> AGPL 3.0 </a>
+          &nbsp;&amp;&nbsp;
+          <a class="text-primary font-weight-bold" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"> Creative Commons (CC BY-NC-SA 4.0) </a>
+        </div>
+      </footer>
+    <script src="./assets/js/toggleSidebar.js"></script>
+    <script src="./assets/js/event-handler.js"></script>
+
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register("sw.js");
+        });
+      }
+    </script>
+  
+
+</div><script type="module" src="https://cdn.vlabs.ac.in/bug-report/vlabs-bug-report.js"></script><script type="module" src="/exp-adaptive-algorithms-iitr/plugins/svc-rating/index.js"></script><script type="module" src="/exp-adaptive-algorithms-iitr/plugins/svc-rating/config.js"></script><script type="module" src="https://apis.google.com/js/api.js"></script></body></html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVDR Beamformer</title>
+    <script src="https://cdn.jsdelivr.net/npm/recharts@2.5.0/dist/Recharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.11.0/lib/browser/math.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .header a {
+            color: #6bb6e5;
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            border-bottom: 1px solid #6bb6e5;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0 30px;
+        }
+
+        .tab-button {
+            background: #e6f2fb;
+            color: #000;
+            border: none;
+            padding: 10px 35px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: "Times New Roman", serif;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .tab-button.active {
+            background: #b7d4ec;
+            font-weight: bold;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .code-section {
+            width: 65%;
+        }
+
+        .code-textarea {
+            width: 100%;
+            height: 280px;
+            border: 3px solid #000;
+            border-radius: 8px;
+            box-shadow: inset 0 0 0 3px #e3f2fd;
+            padding: 18px;
+            font-size: 16px;
+            resize: none;
+            overflow-x: auto;
+            white-space: pre;
+            font-family: "Courier New", monospace;
+            background: #fff;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            background: #b7d4ec;
+            border: none;
+            border-radius: 10px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .download-btn {
+            margin-right: 35px;
+        }
+
+        .params-section {
+            width: 32%;
+            background: #e6f2fb;
+            padding: 25px 20px;
+            border-radius: 15px;
+        }
+
+        .params-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .param-group {
+            margin-bottom: 16px;
+        }
+
+        .param-group label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .param-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .param-input {
+            width: 60px;
+            height: 32px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 14px;
+            padding: 5px;
+        }
+
+        .param-slider {
+            flex: 1;
+            height: 6px;
+        }
+
+        .generate-btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .chart-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .chart-wrapper {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 16px;
+        }
+
+        .chart-box {
+            background: #ffffff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 950px;
+            height: 480px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        .modal-content h3 {
+            margin: 0 0 15px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .modal-content p {
+            margin: 0;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #0ea5e9;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="#">Adaptive Signal Processing</a>
+        </div>
+
+        <div class="tab-buttons">
+            <button class="tab-button" id="lmsTab">LMS</button>
+            <button class="tab-button active" id="mvdrTab">MVDR</button>
+        </div>
+
+        <div class="main-content">
+            <div class="code-section">
+                <textarea id="codeTextarea" class="code-textarea" readonly>Code will be generated here..!</textarea>
+                
+                <div class="button-group">
+                    <button class="btn download-btn" id="downloadBtn">Download</button>
+                    <button class="btn" id="runBtn">Submit & Run</button>
+                </div>
+            </div>
+
+            <div class="params-section">
+                <h3>Select the input Parameters</h3>
+                
+                <div class="param-group">
+                    <label>8 ≤ Number of antennas (N) ≤ 12</label>
+                    <div class="param-controls">
+                        <input type="text" class="param-input" id="nInput" value="10">
+                        <input type="range" class="param-slider" id="nSlider" min="8" max="12" value="10">
+                    </div>
+                </div>
+
+                <div class="param-group">
+                    <label>0 ≤ DOA of signal (θₛ) ≤ 90</label>
+                    <div class="param-controls">
+                        <input type="text" class="param-input" id="thetaSInput" value="45">
+                        <input type="range" class="param-slider" id="thetaSSlider" min="0" max="90" value="45">
+                    </div>
+                </div>
+
+                <div class="param-group">
+                    <label>-90 ≤ DOA of interference (θᵢ) ≤ 0</label>
+                    <div class="param-controls">
+                        <input type="text" class="param-input" id="thetaIInput" value="-45">
+                        <input type="range" class="param-slider" id="thetaISlider" min="-90" max="0" value="-45">
+                    </div>
+                </div>
+
+                <div class="param-group">
+                    <label>1024 ≤ Number of snapshots (ss) ≤ 8192</label>
+                    <div class="param-controls">
+                        <input type="text" class="param-input" id="ssInput" value="4096">
+                        <input type="range" class="param-slider" id="ssSlider" min="1024" max="8192" step="1" value="4096">
+                    </div>
+                </div>
+
+                <div class="param-group">
+                    <label>0 ≤ SNR (dB) ≤ 40</label>
+                    <div class="param-controls">
+                        <input type="text" class="param-input" id="snrInput" value="20">
+                        <input type="range" class="param-slider" id="snrSlider" min="0" max="40" value="20">
+                    </div>
+                </div>
+
+                <div class="param-group">
+                    <label>10 ≤ INR (dB) ≤ 40</label>
+                    <div class="param-controls">
+                        <input type="text" class="param-input" id="inrInput" value="25">
+                        <input type="range" class="param-slider" id="inrSlider" min="10" max="40" value="25">
+                    </div>
+                </div>
+
+                <div class="param-group">
+                    <label>10 ≤ Monte Carlo runs ≤ 100</label>
+                    <div class="param-controls">
+                        <input type="text" class="param-input" id="runsInput" value="50">
+                        <input type="range" class="param-slider" id="runsSlider" min="10" max="100" value="50">
+                    </div>
+                </div>
+
+                <button class="btn generate-btn" id="generateBtn">Generate Code</button>
+            </div>
+        </div>
+
+        <div id="chartContainer" style="display: none;">
+            <div class="chart-wrapper">
+                <h3 class="chart-title">MVDR Beamformed Output with Monte Carlo Runs</h3>
+                <div class="chart-box">
+                    <canvas id="chartCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            <h3>Simulation Running</h3>
+            <p>The simulation is currently running and may take some time to complete. Please wait...</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        // Parameters object
+        const params = {
+            N: 10,
+            theta_s: 45,
+            theta_i: -45,
+            ss: 4096,
+            snr: 20,
+            inr: 25,
+            runs: 50
+        };
+
+        // Sync input and slider
+        function syncInputs(inputId, sliderId, paramName) {
+            const input = document.getElementById(inputId);
+            const slider = document.getElementById(sliderId);
+
+            input.addEventListener('input', (e) => {
+                const value = parseFloat(e.target.value);
+                slider.value = value;
+                params[paramName] = value;
+            });
+
+            slider.addEventListener('input', (e) => {
+                const value = parseFloat(e.target.value);
+                input.value = value;
+                params[paramName] = value;
+            });
+        }
+
+        syncInputs('nInput', 'nSlider', 'N');
+        syncInputs('thetaSInput', 'thetaSSlider', 'theta_s');
+        syncInputs('thetaIInput', 'thetaISlider', 'theta_i');
+        syncInputs('ssInput', 'ssSlider', 'ss');
+        syncInputs('snrInput', 'snrSlider', 'snr');
+        syncInputs('inrInput', 'inrSlider', 'inr');
+        syncInputs('runsInput', 'runsSlider', 'runs');
+
+        // Tab functionality
+        document.getElementById('lmsTab').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('mvdrTab').addEventListener('click', () => {
+            document.getElementById('mvdrTab').classList.add('active');
+            document.getElementById('lmsTab').classList.remove('active');
+        });
+
+        // Generate code
+        document.getElementById('generateBtn').addEventListener('click', () => {
+            const code = `function mvdr_beamformer_with_monte_carlo(N, theta_s, theta_i, ss, snr, num_runs)
+j = sqrt(-1); % Defining complex iota
+source = 1; % Number of signal sources
+interference = 1; % Number of interferences
+% Initialize results storage
+G_dB_all = zeros(num_runs, 180);
+
+% Monte Carlo runs
+for run = 1:num_runs
+    %% Adding the channel to the transmitted signal
+    for m = 1:(source + interference)
+        S(m, :) = 10.^(snr(m)/10)*(randn(1, ss) + j*randn(1, ss));
+    end
+
+    %% Defining the DOA vectors
+    A_i = exp(-j*pi*(0:N-1)'*sin(theta_i/180*pi));
+    A_s = exp(-j*pi*(0:N-1)'*sin(theta_s*pi/180));
+    A = [A_s A_i(:,1:interference)];
+
+    %% Defining AWGN noise at the receiver
+    n = randn(N, ss) + j*randn(N, ss);
+
+    %% Received Signal before MVDR beamforming
+    X = A*S + n;
+
+    %% MVDR beamforming 
+    Wx = A_s' .* 2^10;
+    u = 2^(-31) * 2^16;
+    B0H_B0 = eye(N);
+    B0H_B0(1,1) = 0;
+    dataout = zeros(1, ss);
+    dataout(1,1) = Wx * X(:,1) ./ 2^14;
+
+    %% LMS Algorithm 
+    for i = 1:length(dataout)-1 
+        Wx = Wx - u * (X(:,i)') * B0H_B0 * dataout(1,i);
+        dataout(1,i+1) = Wx * X(:,i+1) ./ 2^15;
+    end
+
+    %% Plotting the graph 
+    phi = -89:1:90;
+    a = exp(-j*pi*(0:N-1)'*sin(phi*pi/180));
+    F = Wx * a;
+
+    G = abs(F).^2 ./ max(abs(F).^2);
+    G_dB = 10*log10(G);
+
+    G_dB_all(run, :) = G_dB;
+end
+
+% Average over all Monte Carlo runs
+G_dB_avg = mean(G_dB_all, 1);
+
+% Plot averaged result
+figure();
+plot(phi, G_dB_avg, 'linewidth', 2);
+legend('d=\\lambda/2');
+xlabel('Angle (\\circ)');
+ylabel('Magnitude (dB)');
+title('MVDR Beamformed Output with Monte Carlo Runs');
+grid on;
+end
+
+% Parameters
+N = ${params.N};          // Number of antennas
+theta_s = ${params.theta_s};    // DOA of signal
+theta_i = ${params.theta_i};    // DOA of interference
+ss = ${params.ss};         // Number of snapshots
+snr = [${params.snr}, ${params.inr}]; // SNR and INR values
+num_runs = ${params.runs};      // Number of Monte Carlo runs
+
+% Call the function
+mvdr_beamformer_with_monte_carlo(N, theta_s, theta_i, ss, snr, num_runs);`;
+            
+            document.getElementById('codeTextarea').value = code;
+        });
+
+        // Download code
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const code = document.getElementById('codeTextarea').value;
+            const blob = new Blob([code], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'mvdr_beamformer.m';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Random number generator (Box-Muller transform)
+        function randn() {
+            const u1 = Math.random();
+            const u2 = Math.random();
+            return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+        }
+
+        // Run MVDR Beamformer
+        document.getElementById('runBtn').addEventListener('click', () => {
+            const btn = document.getElementById('runBtn');
+            const modal = document.getElementById('loadingModal');
+            
+            btn.disabled = true;
+            btn.textContent = 'Running...';
+            modal.style.display = 'flex';
+
+            setTimeout(() => {
+                runMVDRBeamformer();
+                btn.disabled = false;
+                btn.textContent = 'Submit & Run';
+                modal.style.display = 'none';
+            }, 100);
+        });
+
+        function runMVDRBeamformer() {
+            const { N, theta_s, theta_i, ss, snr, inr, runs } = params;
+            
+            const G_dB_all = [];
+            
+            for (let run = 0; run < runs; run++) {
+                const S = math.zeros(2, ss);
+                const snrValues = [snr, inr];
+                
+                for (let m = 0; m < 2; m++) {
+                    const powerScale = Math.pow(10, snrValues[m] / 10);
+                    for (let t = 0; t < ss; t++) {
+                        S.set([m, t], math.multiply(powerScale, math.complex(randn(), randn())));
+                    }
+                }
+                
+                const A_s = math.zeros(N, 1);
+                for (let n = 0; n < N; n++) {
+                    const phase = math.multiply(
+                        math.complex(0, -Math.PI),
+                        math.multiply(n, Math.sin(theta_s * Math.PI / 180))
+                    );
+                    A_s.set([n, 0], math.exp(phase));
+                }
+                
+                const A_i = math.zeros(N, 1);
+                for (let n = 0; n < N; n++) {
+                    const phase = math.multiply(
+                        math.complex(0, -Math.PI),
+                        math.multiply(n, Math.sin(theta_i * Math.PI / 180))
+                    );
+                    A_i.set([n, 0], math.exp(phase));
+                }
+                
+                const A = math.concat(A_s, A_i, 1);
+                
+                const n = math.zeros(N, ss);
+                for (let i = 0; i < N; i++) {
+                    for (let j = 0; j < ss; j++) {
+                        n.set([i, j], math.complex(randn(), randn()));
+                    }
+                }
+                
+                const X = math.add(math.multiply(A, S), n);
+                
+                let Wx = math.zeros(1, N);
+                for (let n = 0; n < N; n++) {
+                    Wx.set([0, n], math.multiply(math.conj(A_s.get([n, 0])), Math.pow(2, 10)));
+                }
+                
+                const u = Math.pow(2, -31) * Math.pow(2, 16);
+                
+                const B0H_B0 = math.identity(N);
+                B0H_B0.set([0, 0], 0);
+                
+                const dataout = math.zeros(1, ss);
+                
+                const X_col_0 = math.column(X, 0);
+                const out0 = math.multiply(Wx, X_col_0);
+                dataout.set([0, 0], math.divide(out0.get([0, 0]), Math.pow(2, 14)));
+                
+                for (let i = 0; i < ss - 1; i++) {
+                    const X_col_i = math.column(X, i);
+                    const X_col_i_H = math.transpose(math.conj(X_col_i));
+                    const dataout_i = dataout.get([0, i]);
+                    const temp = math.multiply(B0H_B0, dataout_i);
+                    const gradient = math.multiply(X_col_i_H, temp);
+                    Wx = math.subtract(Wx, math.multiply(u, gradient));
+                    
+                    const X_col_next = math.column(X, i + 1);
+                    const out_next = math.multiply(Wx, X_col_next);
+                    dataout.set([0, i + 1], math.divide(out_next.get([0, 0]), Math.pow(2, 15)));
+                }
+                
+                const phi = [];
+                const F_mag_sq = [];
+                
+                for (let angle = -89; angle <= 90; angle++) {
+                    phi.push(angle);
+                    
+                    const a = math.zeros(N, 1);
+                    for (let n = 0; n < N; n++) {
+                        const phase = math.multiply(
+                            math.complex(0, -Math.PI),
+                            math.multiply(n, Math.sin(angle * Math.PI / 180))
+                        );
+                        a.set([n, 0], math.exp(phase));
+                    }
+                    
+                    const F = math.multiply(Wx, a);
+                    const F_val = F.get([0, 0]);
+                    const mag = math.abs(F_val);
+                    F_mag_sq.push(mag * mag);
+                }
+                
+                const maxG = Math.max(...F_mag_sq);
+                const G_dB = F_mag_sq.map(g => {
+                    const normalized = g / maxG;
+                    return normalized > 1e-10 ? 10 * Math.log10(normalized) : -100;
+                });
+                
+                G_dB_all.push(G_dB);
+            }
+            
+            const G_dB_avg = [];
+            for (let i = 0; i < 180; i++) {
+                let sum = 0;
+                for (let run = 0; run < runs; run++) {
+                    sum += G_dB_all[run][i];
+                }
+                G_dB_avg.push(sum / runs);
+            }
+            
+            const angles = [];
+            for (let i = 0; i < 180; i++) {
+                angles.push(i - 89);
+            }
+            
+            plotChart(angles, G_dB_avg);
+        }
+
+        function plotChart(angles, magnitudes) {
+            document.getElementById('chartContainer').style.display = 'flex';
+            
+            const canvas = document.getElementById('chartCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = 920;
+            canvas.height = 450;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Chart dimensions
+            const padding = { top: 40, right: 40, bottom: 60, left: 80 };
+            const chartWidth = canvas.width - padding.left - padding.right;
+            const chartHeight = canvas.height - padding.top - padding.bottom;
+            
+            // Find min and max values
+            const minMag = Math.min(...magnitudes);
+            const maxMag = 0;
+            
+            // Draw axes
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, padding.top + chartHeight);
+            ctx.lineTo(padding.left + chartWidth, padding.top + chartHeight);
+            ctx.stroke();
+            
+            // Draw grid
+            ctx.strokeStyle = '#ddd';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 3]);
+            
+            // Vertical grid lines
+            for (let i = 0; i <= 10; i++) {
+                const x = padding.left + (chartWidth / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(x, padding.top);
+                ctx.lineTo(x, padding.top + chartHeight);
+                ctx.stroke();
+            }
+            
+            // Horizontal grid lines
+            for (let i = 0; i <= 10; i++) {
+                const y = padding.top + (chartHeight / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(padding.left + chartWidth, y);
+                ctx.stroke();
+            }
+            
+            ctx.setLineDash([]);
+            
+            // Draw data line
+            ctx.strokeStyle = '#0ea5e9';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            for (let i = 0; i < angles.length; i++) {
+                const x = padding.left + ((angles[i] + 90) / 180) * chartWidth;
+                const y = padding.top + chartHeight - ((magnitudes[i] - minMag) / (maxMag - minMag)) * chartHeight;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+            
+            // Draw axis labels
+            ctx.fillStyle = '#000';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            
+            // X-axis labels
+            for (let i = -90; i <= 90; i += 30) {
+                const x = padding.left + ((i + 90) / 180) * chartWidth;
+                ctx.fillText(i.toString(), x, canvas.height - 20);
+            }
+            
+            // X-axis title
+            ctx.fillText('Angle (°)', canvas.width / 2, canvas.height - 5);
+            
+            // Y-axis labels
+            ctx.textAlign = 'right';
+            const ySteps = 5;
+            for (let i = 0; i <= ySteps; i++) {
+                const value = minMag + (maxMag - minMag) * (i / ySteps);
+                const y = padding.top + chartHeight - (i / ySteps) * chartHeight;
+                ctx.fillText(value.toFixed(1), padding.left - 10, y + 5);
+            }
+            
+            // Y-axis title
+            ctx.save();
+            ctx.translate(20, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.textAlign = 'center';
+            ctx.fillText('Magnitude (dB)', 0, 0);
+            ctx.restore();
+            
+            // Draw legend
+            ctx.fillStyle = '#0ea5e9';
+            ctx.fillRect(canvas.width - 150, 20, 30, 3);
+            ctx.fillStyle = '#000';
+            ctx.textAlign = 'left';
+            ctx.fillText('d=λ/2', canvas.width - 110, 25);
+        }
+    </script>
+</body>
+</html>

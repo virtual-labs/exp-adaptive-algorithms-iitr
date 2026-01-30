@@ -1,0 +1,103 @@
+[
+	{
+		"question": "What is the primary objective of the Minimum Variance Distortionless Response (MVDR) beamformer?",
+		"answers": {
+			"a": "Maximize the output power of the beamformer",
+			"b": "Minimize the output power of the beamformer while maintaining unity response in the desired direction",
+			"c": "Equalize the output power in all directions",
+			"d": "Enhance signals from all directions equally"
+		},
+		"correctAnswer": "b"
+	},
+	{
+		"question": "What is application of Autoregressive process?",
+		"answers": {
+			"a": "Texture modelling of visual content",
+			"b": "Speech processing",
+			"c": "Models for future sample predictions",
+			"d": "All of above"
+		},
+		"correctAnswer": "d"
+	},
+	{
+		"question": "What is the purpose of the Least Mean Squares (LMS) algorithm in the context of beamforming?",
+		"answers": {
+			"a": "To adaptively adjust the beamforming weights to minimize the mean square error",
+			"b": "To maximize the signal-to-noise ratio (SNR)",
+			"c": "To calculate the covariance matrix of the input data",
+			"d": "To ensure equal signal power from all directions"
+		},
+		"correctAnswer": "a"
+	},
+	{
+		"question": "The steering vector a(θ) in beamforming is used to:",
+		"answers": {
+			"a": "Minimize the output power",
+			"b": "Adjust the step size parameter",
+			"c": "Measure the error signal",
+			"d": "Define the desired signal direction"
+		},
+		"correctAnswer": "d"
+	},
+	{
+		"question": "AR process with low order results in:",
+		"answers": {
+			"a": "We will obtain a smoothed spectrum",
+			"b": "There is a risk of introducing spurious low-level peaks in spectrum",
+			"c": "Both of above",
+			"d": "None of above"
+		},
+		"correctAnswer": "a"
+	},
+
+	{
+		"question": "LMS equalizer minimizes __________",
+		"answers": {
+			"a": "Computational complexity",
+			"b": "Cost",
+			"c": "Mean square error",
+			"d": "Power density of output signal"
+		},
+		"correctAnswer": "c"
+	},
+	{
+		"question": "Major application of adaptive filtering is:",
+		"answers": {
+			"a": "System Identification",
+			"b": "Prediction",
+			"c": "Channel equalization",
+			"d": "All of above"
+		},
+		"correctAnswer": "d"
+	},
+	{
+		"question": "For N symbol inputs, LMS algorithm requires ______ operations per iteration.",
+		"answers": {
+			"a": "2N",
+			"b": "N + 1",
+			"c": "2N + 1",
+			"d": "N²"
+		},
+		"correctAnswer": "c"
+	},
+	{
+		"question": "In the context of adaptive prediction, which matrix is updated recursively in the RLS algorithm?",
+		"answers": {
+			"a": "Identity matrix",
+			"b": "Correlation matrix",
+			"c": "Inverse correlation matrix",
+			"d": "Gain matrix"
+		},
+		"correctAnswer": "c"
+	},
+	{
+		"question": "Which of the following correctly describes the cost function minimized by the RLS algorithm?",
+		"answers": {
+			"a": "The sum of squared errors",
+			"b": "The product of squared errors",
+			"c": "The weighted sum of squared errors with an exponential weighting factor",
+			"d": "The absolute sum of errors"
+		},
+		"correctAnswer": "c"
+	}
+]
